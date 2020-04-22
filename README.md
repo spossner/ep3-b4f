@@ -3,7 +3,7 @@ ep3 based (https://bs.hbsys.de/) docker environment to book desks in the office 
 
 # Install
 - install docker
-- checkout project (git clone git@github.com:spossner/ep3-b4f.git)
+- checkout project (git clone https://github.com/spossner/ep3-b4f.git)
 - change to the ep3-b4f directory
 - run docker-compose up --build
 
