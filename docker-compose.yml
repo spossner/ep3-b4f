@@ -1,0 +1,35 @@
+version: '3.1'
+
+services:
+  ep3:
+    image: ep3
+    build: ./ep3
+    ports:
+      - 8080:80
+    environment:
+      EP3_DB_HOST: db
+      EP3_DB_USER: ep3_user
+      EP3_DB_PASSWORD: password
+      EP3_DB_HOST: ep3
+    volumes:
+      - ep3:/var/www/html
+      - ./ep3/config/init.php:/var/www/html/config/init.php
+      - ./ep3/config/autoload/local.php:/var/www/html/config/autoload/local.php
+      - ./ep3/public/.htaccess:/var/www/html/public/.htaccess
+
+  db:
+    image: mariadb:10.3
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: ep3
+      MYSQL_USER: ep3_user
+      MYSQL_PASSWORD: password
+    ports:
+      - 3306:3306
+    volumes:
+      - db:/var/lib/mysql
+
+volumes:
+  ep3:
+  db:
